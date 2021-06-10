@@ -41,3 +41,31 @@ Array.prototype.mySome = function (callbackFn) {
 
     return false;                                       //if the callbackfuntion never returns true return false
 };
+
+// EVERY //
+Array.prototype.myEvery = function (callbackFn) {
+    for (let i = 0; i < this.length; i++) {             //loop through the array
+        if (this[i] === undefined) continue;            //if vlaue is undefined then continue
+        if (callbackFn(this[i], i, this) !== true) {    //if funtion isnt true
+            return false;                               //return false
+        }
+    }
+
+    return true;                                        //if the array is all correct then return true
+};
+
+// REDUCE //
+Array.prototype.myReduce = function (callbackFn, initialval) {
+
+    let tempint = 0                             //create a temp value
+    if (initialval !== undefined) {             //if the initial value  exist then
+        tempint = initialval                    //sent tempint to the initialvalue
+    }
+    for (let i = 0; i < this.length; i++) {     //loop through the array
+        if (this[i] === undefined) continue;                //if undifened continue
+        tempint = callbackFn(tempint, this[i], i, this);    //store callbackfuntion into tempint to use cack into callbackfn
+
+    }
+
+    return tempint;         //returnt he final value
+};
