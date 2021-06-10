@@ -16,3 +16,28 @@ Array.prototype.myMap = function (callbackFn) {
     }
     return temparray;                                   //return the new array
 };
+
+// FILTER //
+Array.prototype.myFilter = function (callbackFn) {
+    const temparray = [];                               //create new array
+    for (let i = 0; i < this.length; i++) {             //loop through the array
+        if (this[i] === undefined) continue;            //value is undefined then continue
+        if (callbackFn(this[i], i, this) === true) {    //if the calbackfn returns true
+            temparray.push(this[i]);                    //push into the array
+        }
+        else continue;
+    }
+    return temparray;                                   //return the new array
+};
+
+// SOME //
+Array.prototype.mySome = function (callbackFn) {
+    for (let i = 0; i < this.length; i++) {             //loop through the array
+        if (this[i] === undefined) continue;            //if undefined continue
+        if (callbackFn(this[i], i, this) === true) {       //if the callback funtion return true
+            return true                                 //return true
+        }
+    }
+
+    return false;                                       //if the callbackfuntion never returns true return false
+};
