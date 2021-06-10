@@ -1,2 +1,5 @@
-# WebDevReact
-used for class react assignments
+# WebDev_assign2
+
+Student: Fourcan Abdullah
+Username: FourcanAbdullah
+
