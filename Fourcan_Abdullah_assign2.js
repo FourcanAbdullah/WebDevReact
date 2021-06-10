@@ -69,3 +69,113 @@ Array.prototype.myReduce = function (callbackFn, initialval) {
 
     return tempint;         //returnt he final value
 };
+
+// INCLUDES //
+Array.prototype.myIncludes = function (searchElement, fromIndex) {
+    let i = 0                           //value i =0
+    if (fromIndex !== undefined) {      //if fromIndex exists then
+        i = fromIndex                   //set i to the fromIndex
+    }
+    if (i >= this.length) {             //if i is grater the the array length
+        return false;                   //immediatly return false
+    }
+    if (i < 0) {                        //if i is negative
+        i = this.length + i             //find offset
+        if (i < 0) {                    //if offse tis negative
+            i = 0                       //just set i back to 0
+        }
+    }
+
+    for (i; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        if (searchElement === this[i]) {        //if you can find the value
+            return true                 //then return true
+        }
+
+    }
+
+    return false;           //else false
+
+};
+
+// INDEXOF //
+Array.prototype.myIndexOf = function (searchElement, fromIndex) {
+    let i = 0
+    if (fromIndex !== undefined) {
+        i = fromIndex
+    }
+    if (i >= this.length) {
+        return -1;              //if i is greater then the array legnth return -1
+    }
+    if (i < 0) {
+        i = this.length + i
+        if (i < 0) {
+            i = 0
+        }
+    }
+    for (i; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        if (searchElement === this[i]) {
+            return i;                   //for the value needing to be found return position in array
+        }
+
+    }
+    return -1;
+
+};
+
+// PUSH //
+Array.prototype.myPush = function (...args) {
+    let argindex = 0
+    for (let i = this.length; i < this.length + args.length; i++) {
+        this[i] = args[argindex];
+        argindex++;
+    }
+    return this.length;
+};
+
+// LASTINDEXOF //
+Array.prototype.myLastIndexOf = function (searchElement, fromIndex) {
+    let i = this.length
+    if (fromIndex !== undefined) {
+        i = fromIndex
+    }
+    if (i >= this.length) {
+        i = this.length;
+    }
+    if (i < 0) {
+        i = this.length + i
+        if (i < 0) {
+            return -1;
+        }
+    }
+    for (i; i >= 0; i--) {                      //loop array backwords
+        if (this[i] === undefined) continue;
+        if (searchElement === this[i]) {
+            return i;
+        }
+
+    }
+    return -1;
+};
+
+// KEYS //
+Object.grabKeys = function (obj) {
+    let temparr = []            //create array
+    for (let i in obj) {        //loop through object
+        temparr.push(i);        //push the keys into array
+    }
+
+    return temparr;             //return array
+};
+
+// VALUES //
+Object.grabValues = function (obj) {
+    let temparr = []            //create array
+    for (let i in obj) {        //loop through object
+        temparr.push(obj[i]);   //pish value of key into array
+    }
+
+    return temparr;             //return that array
+
+};
